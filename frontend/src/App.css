@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: #000;
+}
+
+/* Force mobile view - container max width to phone size */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  background: #000;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile phone frame */
+#root > * {
+  width: 100%;
+  max-width: 414px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Desktop: Center the mobile frame with bezel effect */
+@media (min-width: 769px) {
+  #root {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  }
+
+  #root > * {
+    box-shadow: 
+      0 0 0 12px #222,
+      0 0 0 14px #333,
+      0 30px 60px rgba(0, 0, 0, 0.6);
+    border-radius: 40px;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Notch effect for iPhone */
+  #root > *::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 28px;
+    background: #222;
+    border-radius: 0 0 30px 30px;
+    z-index: 1000;
+  }
+}

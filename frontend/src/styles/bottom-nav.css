@@ -1,0 +1,76 @@
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 414px;
+  margin: 0 auto;
+  height: 50px;
+  background: var(--card);
+  border-top: 1px solid var(--input-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--muted);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:active {
+  color: var(--accent);
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 30%;
+  height: 2px;
+  background: var(--accent);
+}
+
+.nav-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center the navigation on large screens */
+@media (min-width: 769px) {
+  .bottom-nav {
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(414px - 16px);
+    margin: 0;
+    border-radius: 50px;
+    bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .bottom-nav {
+    height: 48px;
+  }
+
+  .nav-icon {
+    font-size: 22px;
+  }
+}
